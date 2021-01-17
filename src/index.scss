@@ -1,5 +1,6 @@
-$gray: #888888;
-$lightGray: #cccccc;
+$border: #888888;
+$lightBorder: #cccccc;
+$subHeader: #1f1f96;
 
 body {
   margin: 0;
@@ -18,7 +19,7 @@ body {
 }
 
 .subHeader {
-  color: $gray;
+  color: $border;
   margin: 10px;
 }
 
@@ -27,7 +28,7 @@ body {
   height: 30px;
   border-radius: 5px;
   cursor: pointer;
-  border: 1px solid $gray;
+  border: 1px solid $border;
   margin: 10px 2px;
   background: #f8f8f8;
   &:hover {
@@ -41,11 +42,11 @@ body {
 .form__wrapper {
   width: 300px;
   margin: auto;
-  border: 1px solid $gray;
+  border: 1px solid $border;
   .form__header {
     font-size: medium;
     padding: 10px;
-    color: #000088;
+    color: $subHeader;
     background: #eeeeee;
   }
   .form__list {
@@ -63,14 +64,21 @@ body {
     }
     .form__link__active {
       text-decoration: underline;
-      color: #087c08;
     }
+  }
+  .form__message {
+    height: 60px;
+    line-height: 60px;
+    color: $subHeader;
+  }
+  .form__message__error {
+    color: red;
   }
   .inputNum {
     width: 100px;
     height: 25px;
     margin: 20px;
-    border: 1px solid $lightGray;
+    border: 1px solid $lightBorder;
   }
   .inputSize {
     display: flex;

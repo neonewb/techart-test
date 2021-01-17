@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { clearFormData } from 'sessionStorage/clearFormData'
-
-import { BuildingPage } from './Building'
-import { Height } from './Height'
-import { MaterialPage } from './Material'
-import { Size } from './Size'
-import { Result } from './Result'
-import { RootState, setState } from 'store/store'
+import { BuildingPage } from '../pages/Building'
+import { Height } from '../pages/Height'
+import { MaterialPage } from '../pages/Material'
+import { Size } from '../pages/Size'
+import { Result } from '../pages/Result'
+import { Building, RootState, setState } from 'store/store'
 import { getFormData } from 'sessionStorage/getFormData'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const TABS = [
   {
@@ -54,10 +53,15 @@ export const Stepper = () => {
     }
   }, [])
 
+  const building = useSelector<RootState, RootState['building']>(
+    (state) => state.building
+  )
+  const step = building === Building.garage ? state.step - 1 : state.step
+  
   return (
     <div>
       <div className='header'>Калькулятор цены конструкций</div>
-      {state.step < 5 && <div className='subHeader'>Шаг {state.step}</div>}
+      {state.step < 5 && <div className='subHeader'>Шаг {step}</div>}
       {tab && <tab.component title={tab.title} step={state.step} />}
     </div>
   )
